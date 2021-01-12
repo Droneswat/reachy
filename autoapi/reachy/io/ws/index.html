@@ -1,0 +1,344 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>reachy.io.ws &#8212; reachy v1.3.2 documentation</title>
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css" />
+    <script id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="reachy.parts" href="../../parts/index.html" />
+    <link rel="prev" title="reachy.io.luos" href="../luos/index.html" />
+   
+  <link rel="stylesheet" href="../../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="module-reachy.io.ws">
+<span id="reachy-io-ws"></span><h1><a class="reference internal" href="#module-reachy.io.ws" title="reachy.io.ws"><code class="xref py py-mod docutils literal notranslate"><span class="pre">reachy.io.ws</span></code></a><a class="headerlink" href="#module-reachy.io.ws" title="Permalink to this headline">¶</a></h1>
+<p>WebSocket IO definition.</p>
+<div class="section" id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="classes">
+<h3>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#reachy.io.ws.WsIO" title="reachy.io.ws.WsIO"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WsIO</span></code></a></p></td>
+<td><p>WebSocket IO implementation.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#reachy.io.ws.WsMotor" title="reachy.io.ws.WsMotor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WsMotor</span></code></a></p></td>
+<td><p>Motor Placeholder.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#reachy.io.ws.WsFakeOrbitaDisk" title="reachy.io.ws.WsFakeOrbitaDisk"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WsFakeOrbitaDisk</span></code></a></p></td>
+<td><p>Orbital disk placeholder.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#reachy.io.ws.WsFakeForceSensor" title="reachy.io.ws.WsFakeForceSensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WsFakeForceSensor</span></code></a></p></td>
+<td><p>Force Sensor placeholder.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#reachy.io.ws.WsDualCamera" title="reachy.io.ws.WsDualCamera"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WsDualCamera</span></code></a></p></td>
+<td><p>Remote Camera.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#reachy.io.ws.WsServer" title="reachy.io.ws.WsServer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WsServer</span></code></a></p></td>
+<td><p>WebSocket server, sync value from the modules with their equivalent from the client.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#reachy.io.ws.FakeFan" title="reachy.io.ws.FakeFan"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FakeFan</span></code></a></p></td>
+<td><p>Fake fan module for API consistensy.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt id="reachy.io.ws.WsIO">
+<em class="property">class </em><code class="sig-prename descclassname">reachy.io.ws.</code><code class="sig-name descname">WsIO</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">part_name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#reachy.io.ws.WsIO" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../io/index.html#reachy.io.io.IO" title="reachy.io.io.IO"><code class="xref py py-class docutils literal notranslate"><span class="pre">reachy.io.io.IO</span></code></a></p>
+<p>WebSocket IO implementation.</p>
+<dl class="py attribute">
+<dt id="reachy.io.ws.WsIO.ws">
+<code class="sig-name descname">ws</code><a class="headerlink" href="#reachy.io.ws.WsIO.ws" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="reachy.io.ws.WsIO.shared_server">
+<em class="property">classmethod </em><code class="sig-name descname">shared_server</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cls</span></em>, <em class="sig-param"><span class="n">part_name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#reachy.io.ws.WsIO.shared_server" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new io with its ws server.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="reachy.io.ws.WsIO.find_module">
+<code class="sig-name descname">find_module</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">module_name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#reachy.io.ws.WsIO.find_module" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a specific module from the IO.</p>
+<p>For the moment no module are really implemented. Only placeholders for code compatibility are provided.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="reachy.io.ws.WsIO.find_dxl">
+<code class="sig-name descname">find_dxl</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">dxl_name</span></em>, <em class="sig-param"><span class="n">dxl_config</span></em><span class="sig-paren">)</span><a class="headerlink" href="#reachy.io.ws.WsIO.find_dxl" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a specific dynamixel motor from the IO.</p>
+<p>Only goal position is used atm.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="reachy.io.ws.WsIO.find_fan">
+<code class="sig-name descname">find_fan</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">fan_name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#reachy.io.ws.WsIO.find_fan" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a specific fan from its name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="reachy.io.ws.WsIO.find_orbita_disks">
+<code class="sig-name descname">find_orbita_disks</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#reachy.io.ws.WsIO.find_orbita_disks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a specific orbita module from the IO.</p>
+<p>Not currently supported.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="reachy.io.ws.WsIO.find_camera">
+<code class="sig-name descname">find_camera</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">index</span></em><span class="sig-paren">)</span><a class="headerlink" href="#reachy.io.ws.WsIO.find_camera" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve a dual camera.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="reachy.io.ws.WsIO.close">
+<code class="sig-name descname">close</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#reachy.io.ws.WsIO.close" title="Permalink to this definition">¶</a></dt>
+<dd><p>Close the WS.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="reachy.io.ws.WsMotor">
+<em class="property">class </em><code class="sig-prename descclassname">reachy.io.ws.</code><code class="sig-name descname">WsMotor</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">initial_position</span></em><span class="sig-paren">)</span><a class="headerlink" href="#reachy.io.ws.WsMotor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Motor Placeholder.</p>
+<p>Only the goal position (ie. target_rot_position) is currently used.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="reachy.io.ws.WsFakeOrbitaDisk">
+<em class="property">class </em><code class="sig-prename descclassname">reachy.io.ws.</code><code class="sig-name descname">WsFakeOrbitaDisk</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">initial_position</span></em><span class="sig-paren">)</span><a class="headerlink" href="#reachy.io.ws.WsFakeOrbitaDisk" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Orbital disk placeholder.</p>
+<dl class="py method">
+<dt id="reachy.io.ws.WsFakeOrbitaDisk.__repr__">
+<code class="sig-name descname">__repr__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a><a class="headerlink" href="#reachy.io.ws.WsFakeOrbitaDisk.__repr__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Public Orbita disk string representation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="reachy.io.ws.WsFakeOrbitaDisk.setup">
+<code class="sig-name descname">setup</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#reachy.io.ws.WsFakeOrbitaDisk.setup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize the disk.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="reachy.io.ws.WsFakeOrbitaDisk.rot_position">
+<em class="property">property </em><code class="sig-name descname">rot_position</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#reachy.io.ws.WsFakeOrbitaDisk.rot_position" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the current disk angle position (in deg.).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="reachy.io.ws.WsFakeOrbitaDisk.temperature">
+<em class="property">property </em><code class="sig-name descname">temperature</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#reachy.io.ws.WsFakeOrbitaDisk.temperature" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the current temperature in C.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="reachy.io.ws.WsFakeOrbitaDisk.target_rot_position">
+<em class="property">property </em><code class="sig-name descname">target_rot_position</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#reachy.io.ws.WsFakeOrbitaDisk.target_rot_position" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the current target angle position (in deg.).</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="reachy.io.ws.WsFakeForceSensor">
+<em class="property">class </em><code class="sig-prename descclassname">reachy.io.ws.</code><code class="sig-name descname">WsFakeForceSensor</code><a class="headerlink" href="#reachy.io.ws.WsFakeForceSensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Force Sensor placeholder.</p>
+<p>Always return a nan as force.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="reachy.io.ws.WsDualCamera">
+<em class="property">class </em><code class="sig-prename descclassname">reachy.io.ws.</code><code class="sig-name descname">WsDualCamera</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">side</span></em><span class="sig-paren">)</span><a class="headerlink" href="#reachy.io.ws.WsDualCamera" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Remote Camera.</p>
+<dl class="py method">
+<dt id="reachy.io.ws.WsDualCamera.read">
+<code class="sig-name descname">read</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#reachy.io.ws.WsDualCamera.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get latest received frame.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="reachy.io.ws.WsDualCamera.close">
+<code class="sig-name descname">close</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#reachy.io.ws.WsDualCamera.close" title="Permalink to this definition">¶</a></dt>
+<dd><p>Close the camera.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="reachy.io.ws.WsServer">
+<em class="property">class </em><code class="sig-prename descclassname">reachy.io.ws.</code><code class="sig-name descname">WsServer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">host</span><span class="o">=</span><span class="default_value">'0.0.0.0'</span></em>, <em class="sig-param"><span class="n">port</span><span class="o">=</span><span class="default_value">6171</span></em><span class="sig-paren">)</span><a class="headerlink" href="#reachy.io.ws.WsServer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>WebSocket server, sync value from the modules with their equivalent from the client.</p>
+<dl class="py method">
+<dt id="reachy.io.ws.WsServer.sync">
+<em class="property">async </em><code class="sig-name descname">sync</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">websocket</span></em>, <em class="sig-param"><span class="n">path</span></em><span class="sig-paren">)</span><a class="headerlink" href="#reachy.io.ws.WsServer.sync" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sync loop that exchange modules state with the client.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="reachy.io.ws.WsServer.close">
+<code class="sig-name descname">close</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#reachy.io.ws.WsServer.close" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stop the sync loop.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="reachy.io.ws.WsServer.register">
+<code class="sig-name descname">register</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">io</span></em><span class="sig-paren">)</span><a class="headerlink" href="#reachy.io.ws.WsServer.register" title="Permalink to this definition">¶</a></dt>
+<dd><p>Register a new io (and its module) to be synced.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="reachy.io.ws.WsServer.run_forever">
+<code class="sig-name descname">run_forever</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#reachy.io.ws.WsServer.run_forever" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the sync loop forever.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="reachy.io.ws.WsServer.run_in_background">
+<code class="sig-name descname">run_in_background</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#reachy.io.ws.WsServer.run_in_background" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the sync loop forever in background.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="reachy.io.ws.FakeFan">
+<em class="property">class </em><code class="sig-prename descclassname">reachy.io.ws.</code><code class="sig-name descname">FakeFan</code><a class="headerlink" href="#reachy.io.ws.FakeFan" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Fake fan module for API consistensy.</p>
+<dl class="py method">
+<dt id="reachy.io.ws.FakeFan.on">
+<code class="sig-name descname">on</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#reachy.io.ws.FakeFan.on" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do nothing.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="reachy.io.ws.FakeFan.off">
+<code class="sig-name descname">off</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#reachy.io.ws.FakeFan.off" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do nothing.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../../index.html">reachy</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">reachy</span></code></a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../index.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">reachy.io</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../parts/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">reachy.parts</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../trajectory/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">reachy.trajectory</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../utils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">reachy.utils</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../index.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../index.html#package-contents">Package Contents</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">reachy</span></code></a><ul>
+  <li><a href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">reachy.io</span></code></a><ul>
+      <li>Previous: <a href="../luos/index.html" title="previous chapter"><code class="xref py py-mod docutils literal notranslate"><span class="pre">reachy.io.luos</span></code></a></li>
+      <li>Next: <a href="../../parts/index.html" title="next chapter"><code class="xref py py-mod docutils literal notranslate"><span class="pre">reachy.parts</span></code></a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Pollen Robotics.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.4.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../../../../_sources/autoapi/reachy/io/ws/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

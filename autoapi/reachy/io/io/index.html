@@ -1,0 +1,192 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>reachy.io.io &#8212; reachy v1.3.2 documentation</title>
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css" />
+    <script id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="reachy.io.luos" href="../luos/index.html" />
+    <link rel="prev" title="reachy.io.cam" href="../cam/index.html" />
+   
+  <link rel="stylesheet" href="../../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="module-reachy.io.io">
+<span id="reachy-io-io"></span><h1><a class="reference internal" href="#module-reachy.io.io" title="reachy.io.io"><code class="xref py py-mod docutils literal notranslate"><span class="pre">reachy.io.io</span></code></a><a class="headerlink" href="#module-reachy.io.io" title="Permalink to this headline">¶</a></h1>
+<p>Abstract IO definition.</p>
+<div class="section" id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="classes">
+<h3>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#reachy.io.io.IO" title="reachy.io.io.IO"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IO</span></code></a></p></td>
+<td><p>Abstract IO class.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt id="reachy.io.io.IO">
+<em class="property">class </em><code class="sig-prename descclassname">reachy.io.io.</code><code class="sig-name descname">IO</code><a class="headerlink" href="#reachy.io.io.IO" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Abstract IO class.</p>
+<p>Defines how to find and interact with the module.</p>
+<dl class="py method">
+<dt id="reachy.io.io.IO.find_module">
+<em class="property">abstract </em><code class="sig-name descname">find_module</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">module_name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#reachy.io.io.IO.find_module" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a specific module from the IO.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="reachy.io.io.IO.find_dxl">
+<em class="property">abstract </em><code class="sig-name descname">find_dxl</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">dxl_name</span></em>, <em class="sig-param"><span class="n">dxl_config</span></em><span class="sig-paren">)</span><a class="headerlink" href="#reachy.io.io.IO.find_dxl" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a specific dynamixel motor from the IO.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="reachy.io.io.IO.find_fan">
+<em class="property">abstract </em><code class="sig-name descname">find_fan</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">fan_name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#reachy.io.io.IO.find_fan" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a specific fan from its name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="reachy.io.io.IO.find_orbita_disks">
+<em class="property">abstract </em><code class="sig-name descname">find_orbita_disks</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#reachy.io.io.IO.find_orbita_disks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a specific orbita disk from the IO.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="reachy.io.io.IO.close">
+<em class="property">abstract </em><code class="sig-name descname">close</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#reachy.io.io.IO.close" title="Permalink to this definition">¶</a></dt>
+<dd><p>Close and clean the IO.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="reachy.io.io.IO.find_camera">
+<em class="property">abstract </em><code class="sig-name descname">find_camera</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">camera_index</span></em><span class="sig-paren">)</span><a class="headerlink" href="#reachy.io.io.IO.find_camera" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a camera.</p>
+<dl class="simple">
+<dt>The camera object must implement following methods:</dt><dd><ul class="simple">
+<li><p>read() -&gt; bool, img</p></li>
+<li><p>close()</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../../index.html">reachy</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">reachy</span></code></a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../index.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">reachy.io</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../parts/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">reachy.parts</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../trajectory/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">reachy.trajectory</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../utils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">reachy.utils</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../index.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../index.html#package-contents">Package Contents</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">reachy</span></code></a><ul>
+  <li><a href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">reachy.io</span></code></a><ul>
+      <li>Previous: <a href="../cam/index.html" title="previous chapter"><code class="xref py py-mod docutils literal notranslate"><span class="pre">reachy.io.cam</span></code></a></li>
+      <li>Next: <a href="../luos/index.html" title="next chapter"><code class="xref py py-mod docutils literal notranslate"><span class="pre">reachy.io.luos</span></code></a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Pollen Robotics.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.4.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../../../../_sources/autoapi/reachy/io/io/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

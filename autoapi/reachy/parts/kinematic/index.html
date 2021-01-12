@@ -1,0 +1,286 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>reachy.parts.kinematic &#8212; reachy v1.3.2 documentation</title>
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css" />
+    <script id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="reachy.parts.motor" href="../motor/index.html" />
+    <link rel="prev" title="reachy.parts.head" href="../head/index.html" />
+   
+  <link rel="stylesheet" href="../../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="module-reachy.parts.kinematic">
+<span id="reachy-parts-kinematic"></span><h1><a class="reference internal" href="#module-reachy.parts.kinematic" title="reachy.parts.kinematic"><code class="xref py py-mod docutils literal notranslate"><span class="pre">reachy.parts.kinematic</span></code></a><a class="headerlink" href="#module-reachy.parts.kinematic" title="Permalink to this headline">¶</a></h1>
+<p>Kinematic forward and inverse utility module.</p>
+<ul class="simple">
+<li><p>Allow the creation of kinematic chain (following a simplified DH notation)</p></li>
+<li><p>Compute the forward kinematic</p></li>
+<li><p>Provide optimization via scipy for inverse approximation</p></li>
+</ul>
+<div class="section" id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="classes">
+<h3>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#reachy.parts.kinematic.Link" title="reachy.parts.kinematic.Link"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Link</span></code></a></p></td>
+<td><p>Simplified Link following DH notation.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#reachy.parts.kinematic.Chain" title="reachy.parts.kinematic.Chain"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Chain</span></code></a></p></td>
+<td><p>Chain of Link forming a kinematic chain.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#reachy.parts.kinematic.translation_matrix" title="reachy.parts.kinematic.translation_matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">translation_matrix</span></code></a>(translation)</p></td>
+<td><p>Create homogenous matrix given a 3D translation vector.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#reachy.parts.kinematic.position_dist" title="reachy.parts.kinematic.position_dist"><code class="xref py py-obj docutils literal notranslate"><span class="pre">position_dist</span></code></a>(P, Q)</p></td>
+<td><p>Compute euclidian distance between two 3D position.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#reachy.parts.kinematic.rotation_dist" title="reachy.parts.kinematic.rotation_dist"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rotation_dist</span></code></a>(P, Q)</p></td>
+<td><p>Compute rotation distance between two 3D rotation.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#reachy.parts.kinematic.pose_dist" title="reachy.parts.kinematic.pose_dist"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pose_dist</span></code></a>(M1, M2, threshold=-1)</p></td>
+<td><p>Compute distance between two pose.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt id="reachy.parts.kinematic.Link">
+<em class="property">class </em><code class="sig-prename descclassname">reachy.parts.kinematic.</code><code class="sig-name descname">Link</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">translation</span></em>, <em class="sig-param"><span class="n">rotation</span></em>, <em class="sig-param"><span class="n">bounds</span></em><span class="sig-paren">)</span><a class="headerlink" href="#reachy.parts.kinematic.Link" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Simplified Link following DH notation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>translation</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></a>) – 3d translation from the previous link</p></li>
+<li><p><strong>rotation</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></a>) – 3d euler rotation (xyz) from the previous link</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="reachy.parts.kinematic.Link.transformation_matrix">
+<code class="sig-name descname">transformation_matrix</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">theta</span></em><span class="sig-paren">)</span><a class="headerlink" href="#reachy.parts.kinematic.Link.transformation_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute local transformation matrix for given angle.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>theta</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><em>float</em></a>) – joint rotation angle (in radians)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="reachy.parts.kinematic.Chain">
+<em class="property">class </em><code class="sig-prename descclassname">reachy.parts.kinematic.</code><code class="sig-name descname">Chain</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">links</span></em><span class="sig-paren">)</span><a class="headerlink" href="#reachy.parts.kinematic.Chain" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Chain of Link forming a kinematic chain.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>links</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><em>list</em></a>) – list of <a class="reference internal" href="#reachy.parts.kinematic.Link" title="reachy.parts.kinematic.Link"><code class="xref py py-class docutils literal notranslate"><span class="pre">Link</span></code></a></p>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="reachy.parts.kinematic.Chain.bounds">
+<em class="property">property </em><code class="sig-name descname">bounds</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#reachy.parts.kinematic.Chain.bounds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get bounds for each link.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="reachy.parts.kinematic.Chain.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">joints</span></em><span class="sig-paren">)</span><a class="headerlink" href="#reachy.parts.kinematic.Chain.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute forward kinematics of the chain given joints configurations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>joints</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></a>) – N*J array joint rotation angle for each link (in radians)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>4x4 homogeneous matrix pose of the end effector</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></a></p>
+</dd>
+</dl>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>this is a vectorized version of the forward!</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="reachy.parts.kinematic.Chain.inverse">
+<code class="sig-name descname">inverse</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">poses</span></em>, <em class="sig-param"><span class="n">q0s</span></em>, <em class="sig-param"><span class="n">maxiter</span><span class="o">=</span><span class="default_value">10</span></em><span class="sig-paren">)</span><a class="headerlink" href="#reachy.parts.kinematic.Chain.inverse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Approximate the inverse kinematics of the chain given end pose.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>poses</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></a>) – N*4*4 homogeneous matrix poses for the end effector</p></li>
+<li><p><strong>q0s</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></a>) – N*J initial joint configuration used to bootstrap the optimization</p></li>
+<li><p><strong>maxiter</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><em>int</em></a>) – maximum number of iteration to run on the optimizer</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>this is a vectorized version of the forward!</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="reachy.parts.kinematic.Chain._inverse">
+<code class="sig-name descname">_inverse</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">target</span></em>, <em class="sig-param"><span class="n">q0</span></em>, <em class="sig-param"><span class="n">maxiter</span></em><span class="sig-paren">)</span><a class="headerlink" href="#reachy.parts.kinematic.Chain._inverse" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="reachy.parts.kinematic.translation_matrix">
+<code class="sig-prename descclassname">reachy.parts.kinematic.</code><code class="sig-name descname">translation_matrix</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">translation</span></em><span class="sig-paren">)</span><a class="headerlink" href="#reachy.parts.kinematic.translation_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create homogenous matrix given a 3D translation vector.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="reachy.parts.kinematic.position_dist">
+<code class="sig-prename descclassname">reachy.parts.kinematic.</code><code class="sig-name descname">position_dist</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">P</span></em>, <em class="sig-param"><span class="n">Q</span></em><span class="sig-paren">)</span><a class="headerlink" href="#reachy.parts.kinematic.position_dist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute euclidian distance between two 3D position.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="reachy.parts.kinematic.rotation_dist">
+<code class="sig-prename descclassname">reachy.parts.kinematic.</code><code class="sig-name descname">rotation_dist</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">P</span></em>, <em class="sig-param"><span class="n">Q</span></em><span class="sig-paren">)</span><a class="headerlink" href="#reachy.parts.kinematic.rotation_dist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute rotation distance between two 3D rotation.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="reachy.parts.kinematic.pose_dist">
+<code class="sig-prename descclassname">reachy.parts.kinematic.</code><code class="sig-name descname">pose_dist</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">M1</span></em>, <em class="sig-param"><span class="n">M2</span></em>, <em class="sig-param"><span class="n">threshold</span><span class="o">=</span><span class="default_value">- 1</span></em><span class="sig-paren">)</span><a class="headerlink" href="#reachy.parts.kinematic.pose_dist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute distance between two pose.</p>
+<p>The distance is defined as the sum of the position distance and the rotation distance where 1° of error is equal to 1mm error distance.</p>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../../index.html">reachy</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">reachy</span></code></a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../index.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../io/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">reachy.io</span></code></a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">reachy.parts</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../trajectory/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">reachy.trajectory</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../utils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">reachy.utils</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../index.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../index.html#package-contents">Package Contents</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">reachy</span></code></a><ul>
+  <li><a href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">reachy.parts</span></code></a><ul>
+      <li>Previous: <a href="../head/index.html" title="previous chapter"><code class="xref py py-mod docutils literal notranslate"><span class="pre">reachy.parts.head</span></code></a></li>
+      <li>Next: <a href="../motor/index.html" title="next chapter"><code class="xref py py-mod docutils literal notranslate"><span class="pre">reachy.parts.motor</span></code></a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Pollen Robotics.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.4.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../../../../_sources/autoapi/reachy/parts/kinematic/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
